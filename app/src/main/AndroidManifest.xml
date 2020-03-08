@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pl.srw.countries">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".CountriesApp"
         android:allowBackup="true"

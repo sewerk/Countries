@@ -2,5 +2,5 @@ package pl.srw.countries
 
 object Config {
 
-    val baseUrl = "https://restcountries.eu/rest/v2/"
+    const val baseUrl = "https://restcountries.eu/rest/v2/"
 }

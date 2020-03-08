@@ -5,23 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.list_fragment.*
 import pl.srw.countries.R
+import javax.inject.Inject
 
 class ListFragment : DaggerFragment() {
 
-    private val viewModel: ListViewModel by viewModels()
+    @Inject lateinit var vmFactory: ListViewModel.Factory
+
+    private val viewModel: ListViewModel by viewModels { vmFactory }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.list_fragment, container, false)
-    }
+    ): View = inflater.inflate(R.layout.list_fragment, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
+        val adapter = CountriesAdapter()
+        list.adapter = adapter
+        viewModel.countries.observe(viewLifecycleOwner) {
+            progress_bar.visibility = if (it != null) View.GONE else View.VISIBLE
+            adapter.data = it
+            adapter.notifyDataSetChanged()
+        }
     }
 
     companion object {
