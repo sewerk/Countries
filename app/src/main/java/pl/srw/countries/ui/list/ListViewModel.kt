@@ -24,9 +24,18 @@ class ListViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { countries.value = it },
-                { Log.e("ListViewModel", "Countries fetch failed", it) }
+                this::onSuccess,
+                this::handleError
             ).addTo(disposables)
+    }
+
+    private fun onSuccess(it: List<Country>?) {
+        countries.value = it
+    }
+
+    private fun handleError(throwable: Throwable?) {
+        Log.e("ListViewModel", "Countries fetch failed", throwable)
+        // TODO: proper error handling requires passing state to UI
     }
 
     override fun onCleared() {
