@@ -1,7 +1,5 @@
 package pl.srw.countries.di
 
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -23,24 +21,14 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        converter: MoshiConverterFactory
-    ): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .addConverterFactory(converter)
+            .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .baseUrl(Config.baseUrl)
             .client(okHttpClient)
             .build()
     }
-
-    @Provides
-    fun provideMoshiConverterFactory(): MoshiConverterFactory = MoshiConverterFactory.create(
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    )
 
     @Provides
     fun providesOkHttp(
