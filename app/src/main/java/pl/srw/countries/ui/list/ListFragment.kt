@@ -9,11 +9,12 @@ import androidx.lifecycle.observe
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.list_fragment.*
 import pl.srw.countries.R
+import pl.srw.countries.common.ViewModelFactory
 import javax.inject.Inject
 
 class ListFragment : DaggerFragment() {
 
-    @Inject lateinit var vmFactory: ListViewModel.Factory
+    @Inject lateinit var vmFactory: ViewModelFactory<ListViewModel>
 
     private val viewModel: ListViewModel by viewModels { vmFactory }
 
