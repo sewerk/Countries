@@ -11,6 +11,10 @@ import pl.srw.countries.api.model.Country
 class CountriesAdapter : RecyclerView.Adapter<CountryVH>() {
 
     var data: List<Country> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryVH {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_item, parent, false)
