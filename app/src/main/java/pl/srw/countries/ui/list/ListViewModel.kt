@@ -11,6 +11,7 @@ import pl.srw.countries.common.UiState
 import pl.srw.countries.common.addTo
 import pl.srw.countries.common.startWithProgress
 import pl.srw.countries.repository.CountryRepo
+import timber.log.Timber
 import javax.inject.Inject
 
 typealias CountriesState = UiState<List<Country>>
@@ -39,7 +40,7 @@ class ListViewModel @Inject constructor(
     }
 
     private fun handleError(throwable: Throwable) {
-        Log.e("ListViewModel", "Countries fetch failed", throwable)
+        Timber.e(throwable,"Countries fetch failed")
         countries.value = UiState.Error(throwable.message)
     }
 
