@@ -1,10 +1,10 @@
-This is example project displaying Countries related data, retrieved from REST API on https://restcountries.eu
+This is a sample project displaying Countries related data (like currencies or phone code), retrieved from REST API on https://restcountries.eu
 
-This project shows integration of following libraries:
-- Dagger 2
-- RxJava 2
-- Retrofit 2
-- Jetpack: ViewModel, LiveData, ConstraintLayout
+This project showcase integration of following libraries:
+- [Dagger2](https://dagger.dev/) (migration to [Hilt](https://dagger.dev/hilt/) can be found on [branch](https://github.com/sewerk/Countries/tree/di-hilt))
+- [RxJava2](https://github.com/ReactiveX/RxJava)
+- [Retrofit2](https://square.github.io/retrofit/)
+- [Jetpack](https://developer.android.com/jetpack): ViewModel, LiveData, ConstraintLayout
 
 ## License
 
