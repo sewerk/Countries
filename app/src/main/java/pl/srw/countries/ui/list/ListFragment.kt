@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.list_fragment.*
 import pl.srw.countries.R
 import pl.srw.countries.common.UiState
@@ -15,7 +16,8 @@ import pl.srw.countries.common.ViewModelFactory
 import pl.srw.countries.common.exhaustive
 import javax.inject.Inject
 
-class ListFragment : DaggerFragment() {
+@AndroidEntryPoint
+class ListFragment : Fragment() {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory<ListViewModel>
