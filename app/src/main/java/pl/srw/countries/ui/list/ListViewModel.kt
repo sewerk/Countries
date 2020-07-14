@@ -1,6 +1,6 @@
 package pl.srw.countries.ui.list
 
-import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,11 +12,10 @@ import pl.srw.countries.common.addTo
 import pl.srw.countries.common.startWithProgress
 import pl.srw.countries.repository.CountryRepo
 import timber.log.Timber
-import javax.inject.Inject
 
 typealias CountriesState = UiState<List<Country>>
 
-class ListViewModel @Inject constructor(
+class ListViewModel @ViewModelInject constructor(
     countryRepo: CountryRepo
 ) : ViewModel() {
 

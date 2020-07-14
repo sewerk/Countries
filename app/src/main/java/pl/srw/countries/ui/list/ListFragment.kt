@@ -12,17 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.list_fragment.*
 import pl.srw.countries.R
 import pl.srw.countries.common.UiState
-import pl.srw.countries.common.ViewModelFactory
 import pl.srw.countries.common.exhaustive
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
 
-    @Inject
-    lateinit var vmFactory: ViewModelFactory<ListViewModel>
-
-    private val viewModel: ListViewModel by viewModels { vmFactory }
+    private val viewModel: ListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
