@@ -1,6 +1,6 @@
-This is example project displaying Countries related data, retireved from REST API on https://restcountries.eu
+This is example project displaying Countries related data, retrieved from REST API on https://restcountries.eu
 
-This project show usage of following libraries:
+This project shows integration of following libraries:
 - Dagger 2
 - RxJava 2
 - Retrofit 2
